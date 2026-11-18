@@ -1,0 +1,3 @@
+root@ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                                             NAMES
+42449a197c67   nginx:alpine   "/docker-entrypoint.…"   About a minute ago   Up About a minute   80/tcp, 0.0.0.0:9080->90/tcp, [::]:9080->90/tcp   sato
