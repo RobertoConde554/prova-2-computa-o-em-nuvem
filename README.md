@@ -13,6 +13,7 @@ Responsabilidade: O provedor gerencia apenas o hardware físico e a virtualizaç
 Exemplo de utilização: Criar uma máquina virtual no Amazon EC2 (AWS) ou no Microsoft Azure Virtual Machines para instalar um servidor Linux, configurar um banco de dados e hospedar o backend de um sistema próprio.
 
 2. SaaS (Software como Serviço)
+
 O que é: O provedor entrega uma aplicação completa e pronta para uso, acessada diretamente pelo navegador web ou aplicativo, sem exigir instalação local ou manutenção de infraestrutura.
 
 Responsabilidade: O provedor gerencia absolutamente tudo: o hardware físico, a rede, o sistema operacional, o armazenamento, a segurança e as atualizações do software. O usuário apenas utiliza a ferramenta.
@@ -21,7 +22,17 @@ Exemplo de utilização: Usar o Google Workspace (Gmail, Google Docs) ou o Micro
 
 
 2 uma empresa utiliza servidores próprios e também recursos de um provedor de nuvem publica. qual  modelo de implantação em nuvem essa empresa ultiliza
-R:
+
+R: A empresa utiliza o modelo de Nuvem Híbrida (ou Hybrid Cloud).
+
+Esse modelo combina a infraestrutura local (on-premises, composta pelos servidores próprios/nuvem privada da empresa) com serviços de nuvem pública (como AWS, Microsoft Azure ou Google Cloud), permitindo que dados e aplicações sejam compartilhados entre ambos os ambientes conforme a necessidade de segurança, custo ou escalabilidade.
+
+
 
 3 qual e a principal diferença entre uma maquina virtual e um contêiner
-R:
+
+R:  A principal diferença entre uma máquina virtual  e um contêiner está no nível de virtualização e na forma como eles utilizam o sistema operacional:
+
+Máquina Virtual: virtualiza o hardware físico por meio de um hypervisor (VMM), rodando um Guest OS completo e independente em cada instância, com seus próprios binários/bibliotecas e aplicações.
+
+Contêiner: virtualiza a camada do sistema operacional, compartilhando o kernel da máquina hospedeira (host machine) e isolando os processos, o que o torna mais leve e rápido para iniciar.
