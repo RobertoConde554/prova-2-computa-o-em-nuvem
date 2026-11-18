@@ -1,0 +1,87 @@
+docker --version
+Docker version 29.1.3, build 29.1.3-0ubuntu3~24.04.2
+root@ubuntu:~$ docker run -d --name sato -p 9080:90 nginx:alpine
+Unable to find image 'nginx:alpine' locally
+alpine: Pulling from library/nginx
+881fc932939e: Pull complete 
+1abafee971b9: Pull complete 
+c7dfd64eeb02: Pull complete 
+e011f124249b: Pull complete 
+a746bd1dc828: Pull complete 
+b9c6ee6a30f8: Pull complete 
+69d81d552257: Pull complete 
+da90db506dd5: Pull complete 
+Digest: sha256:fed7e14be83cbd2661a75cdc5b872d936cf155d46c327084d30b8df19ae88d72
+Status: Downloaded newer image for nginx:alpine
+42449a197c67db74d53cfdf1ea782d7c5f091ef65d6ffc194a0b8854d67f6a82
+root@ubuntu:~$ docker os
+docker: unknown command: docker os
+
+Run 'docker --help' for more information
+root@ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED              STATUS              PORTS                                             NAMES
+42449a197c67   nginx:alpine   "/docker-entrypoint.…"   About a minute ago   Up About a minute   80/tcp, 0.0.0.0:9080->90/tcp, [::]:9080->90/tcp   sato
+root@ubuntu:~$ curl http://localhost:9080
+curl: (56) Recv failure: Connection reset by peer
+root@ubuntu:~$ curl http://localhost:9080
+curl: (56) Recv failure: Connection reset by peer
+root@ubuntu:~$ docker exec sato sh -c 'echo "<h1>Comunicado interno disponivel</h1><p>Aluno: 
+roberto_conde</p>" > /usr/share/nginx/html/index.html'
+root@ubuntu:~$ curl http://localhost:9080
+curl: (52) Empty reply from server
+root@ubuntu:~$ docker stop sato
+sato
+root@ubuntu:~$ docker rm
+docker: 'docker rm' requires at least 1 argument
+
+Usage:  docker rm [OPTIONS] CONTAINER [CONTAINER...]
+
+See 'docker rm --help' for more information
+root@ubuntu:~$ docker rm sato
+sato
+root@ubuntu:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+root@ubuntu:~$ docker run -d --name sato -p 8090:80 nginx:alpine
+c9f03cacda658feb276e69251db65f636d5d4c23850fa51cfa9fb5e7a984015d
+root@ubuntu:~$ docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+c9f03cacda65   nginx:alpine   "/docker-entrypoint.…"   26 seconds ago   Up 25 seconds   0.0.0.0:8090->80/tcp, [::]:8090->80/tcp   sato
+root@ubuntu:~$ curl http://localhost:8090
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, nginx is successfully installed and working.
+Further configuration is required for the web server, reverse proxy, 
+API gateway, load balancer, content cache, or other features.</p>
+
+<p>For online documentation and support please refer to
+<a href="https://nginx.org/">nginx.org</a>.<br/>
+To engage with the community please visit
+<a href="https://community.nginx.org/">community.nginx.org</a>.<br/>
+For enterprise grade support, professional services, additional 
+security features and capabilities please refer to
+<a href="https://f5.com/nginx">f5.com/nginx</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+root@ubuntu:~$ docker exec sato sh -c 'echo "<h1>Comunicado interno disponivel</h1><p>Aluno: 
+roberto_conde</p>" > /usr/share/nginx/html/index.html'
+root@ubuntu:~$ curl http://localhost:8090
+<h1>Comunicado interno disponivel</h1><p>Aluno: 
+roberto_conde</p>
+root@ubuntu:~$ docker stop sato
+sato
+root@ubuntu:~$ docker rm sato
+
+sato
+root@ubuntu:~$ 
