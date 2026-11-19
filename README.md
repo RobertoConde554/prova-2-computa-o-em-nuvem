@@ -3,6 +3,19 @@
 roberto conde sato
 18/11/2026
 
+Atividade Prática: Computação em Nuvem, Docker e Kubernetes
+
+Nesta atividade prática, foram estudados conceitos fundamentais de computação em nuvem, como os modelos IaaS e SaaS, os tipos de implantação em nuvem e as diferenças entre máquinas virtuais e contêineres. Também foram realizadas atividades utilizando o Docker para criar e executar contêineres, além do Kubernetes para gerenciar aplicações, controlar Pods e utilizar Deployments, permitindo compreender na prática como funciona a administração e a escalabilidade de aplicações em ambientes de nuvem.
+
+
+
+Durante esta atividade prática, aprendi como funcionam os principais conceitos de computação em nuvem e a importância dessas tecnologias. Com o Docker, aprendi a criar e executar contêineres de forma prática e organizada. Com o Kubernetes, entendi como gerenciar Pods, utilizar Deployments e manter aplicações funcionando automaticamente. Foi uma experiência importante para ampliar meus conhecimentos sobre infraestrutura, virtualização e gerenciamento de aplicações.
+
+
+
+
+
+
 1 qual e a diferença entre laas e saas ? cite um exemplo de utilização de cada modelo
 
 R: 1. IaaS (Infraestrutura como Serviço)
