@@ -31,8 +31,41 @@ Esse modelo combina a infraestrutura local (on-premises, composta pelos servidor
 
 3 qual e a principal diferença entre uma maquina virtual e um contêiner
 
-R:  A principal diferença entre uma máquina virtual  e um contêiner está no nível de virtualização e na forma como eles utilizam o sistema operacional:
-
-Máquina Virtual: virtualiza o hardware físico por meio de um hypervisor (VMM), rodando um Guest OS completo e independente em cada instância, com seus próprios binários/bibliotecas e aplicações.
+R: Máquina Virtual: virtualiza o hardware físico por meio de um hypervisor (VMM), rodando um Guest OS completo e independente em cada instância, com seus próprios binários/bibliotecas e aplicações.
 
 Contêiner: virtualiza a camada do sistema operacional, compartilhando o kernel da máquina hospedeira (host machine) e isolando os processos, o que o torna mais leve e rápido para iniciar.
+
+
+
+
+
+qual e a diferença entre uma imagem docker e um conteiner em execuçao
+R: Imagem Docker (Docker Image)
+O que contém: O código da aplicação, ambiente de execução, bibliotecas, dependências, variáveis de ambiente e configurações necessárias para rodar.
+
+Comportamento: Funciona como um molde ou template construído (geralmente a partir de um Dockerfile) e armazenado em registros como o Docker Hub.
+
+Imutabilidade: Suas camadas são somente leitura — ela não é alterada quando um contêiner roda.
+
+ Contêiner em Execução (Running Container)
+O que é: É o processo isolado e ativo criado quando você executa uma imagem (por exemplo, com docker run).
+
+Camada gravável: Adiciona uma camada de leitura e escrita (writable layer) sobre a imagem base, permitindo criar arquivos temporários, salvar logs ou modificar dados durante a execução.
+
+Ciclo de vida: Pode ser iniciado, parado, reiniciado ou removido sem afetar a imagem original. Você pode iniciar vários contêineres independentes a partir da mesma imagem.
+
+
+qual e a funcao de um deployment no kubernnets
+R:Principais Funções
+Auto-recuperação (self-healing): Se um Pod for excluído ou falhar, o Deployment detecta que a quantidade ativa ficou abaixo do desejado e sobe outro automaticamente.
+
+Escalonamento (scaling): Permite aumentar ou diminuir o número de réplicas facilmente (por exemplo, com kubectl scale deployment <nome> --replicas=3) para suportar mais ou menos carga.
+
+Atualizações graduais (rolling updates): Ao trocar a imagem do contêiner, o Deployment substitui os Pods antigos pelos novos aos poucos, evitando indisponibilidade.
+
+Reversão (rollback): Se uma nova versão apresentar problema, dá para voltar rapidamente para uma revisão anterior estável com kubectl rollout undo.
+
+o que aconteceu quando voce excluiu um pod por que isso acontece 
+R: Ao excluir o Pod, o Kubernetes o removeu e criou outro automaticamente logo em seguida.
+
+Isso acontece por causa do mecanismo de auto-recuperação (self-healing) do Deployment: como você configurou o estado desejado para 3 réplicas, o Kubernetes monitora o cluster constantemente e, ao detectar que o número caiu para 2, sobe uma nova instância para manter a aplicação disponível com as 3 réplicas exigidas.
